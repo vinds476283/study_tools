@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>公式渲染 | 铟子vinds的学习工具</title>
+	<meta name="description" content="铟子vinds的学习工具 — TeX公式渲染，支持mhchem化学式">
+	<link rel="icon" href="../../favicon.ico">
+	<link rel="apple-touch-icon" href="../../favicon.ico">
+	<link rel="stylesheet" href="../../style.css">
+	<link rel="stylesheet" href="../common.css">
+	<link rel="stylesheet" href="../vendor/katex/katex.min.css">
+	<script src="../../theme.js"></script>
+	<style>
+		.fx-palette {
+			border: 1px solid var(--c-line);
+			border-radius: 8px;
+			padding: 10px 12px 12px;
+			margin-bottom: 12px;
+		}
+		.fx-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+		.fx-tab {
+			font: inherit;
+			font-size: 13px;
+			line-height: 1.4;
+			padding: 3px 10px;
+			color: var(--c-muted);
+			background: transparent;
+			border: 1px solid transparent;
+			border-radius: 6px;
+			cursor: pointer;
+		}
+		.fx-tab:hover { color: var(--c-text); border-color: var(--c-line); }
+		.fx-tab.on { color: #fff; background: var(--c-nav); border-color: var(--c-nav); }
+		.fx-symbols { display: flex; flex-wrap: wrap; gap: 6px; }
+		.fx-sym {
+			min-width: 40px;
+			height: 36px;
+			padding: 0 8px;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			font: inherit;
+			font-size: 15px;
+			color: var(--c-text);
+			background: var(--c-bg);
+			border: 1px solid var(--c-line);
+			border-radius: 6px;
+			cursor: pointer;
+		}
+		.fx-sym:hover { border-color: var(--c-nav); color: var(--c-nav); }
+		.fx-sym .katex { font-size: 1em; }
+		.fx-hint { margin-top: 8px; }
+	</style>
+</head>
+<body class="page-vc">
+	<header class="nav">
+		<a class="brand" href="../../index.html">铟子vinds</a>
+		<span class="spacer"></span>
+		<a class="navlink" href="../../index.html">主页</a>
+		<button class="theme-btn" id="theme-btn" type="button" aria-label="切换夜间模式">☾</button>
+	</header>
+
+	<main class="main">
+		<div class="vc-wrap">
+			<h1>公式渲染</h1>
+
+			<div class="vc-split">
+				<div>
+					<section class="fx-palette">
+						<div class="fx-tabs" id="tabs"></div>
+						<div class="fx-symbols" id="symbols"></div>
+					</section>
+
+					<section class="vc-panel">
+						<label class="vc-label" for="tex">TeX源码</label>
+						<textarea id="tex" class="vc-input" rows="12" spellcheck="false"></textarea>
+						<div class="vc-toolbar">
+							<button class="vc-btn primary" id="btn-copy" type="button">复制TeX</button>
+							<button class="vc-btn" id="btn-clear" type="button">清空</button>
+						</div>
+						<p class="vc-note fx-hint" id="hint"></p>
+					</section>
+				</div>
+
+				<section class="vc-panel">
+					<span class="vc-label">渲染结果</span>
+					<div id="out" class="vc-preview"></div>
+				</section>
+			</div>
+		</div>
+	</main>
+
+	<footer class="foot">
+		<p>Copyright © 2026-present | <a href="https://y.vinds.top" target="_blank" rel="noopener noreferrer">铟子vinds</a></p>
+	</footer>
+
+	<script src="../vendor/katex/katex.min.js"></script>
+	<script src="../vendor/katex/contrib/mhchem.min.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>

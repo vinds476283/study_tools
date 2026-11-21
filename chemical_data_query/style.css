@@ -1,0 +1,78 @@
+/* ==========================================================================
+   化学数据查询 —— 页面独有样式
+   共用部分见 site.css
+   ========================================================================== */
+
+.tiles { margin-top: 6px; }
+
+.tiles .tile-title { color: var(--c-link); }
+
+.tiles .tile-desc { margin-bottom: 0; }
+
+.no-result { margin-top: 16px; }
+
+.table-card { margin-top: 0; }
+
+/* --------------------------------------------------------------- 说明页 */
+
+.doc > :first-child { margin-top: 0; }
+
+.doc h1 { font-size: 26px; line-height: 1.35; margin: 0 0 6px; }
+
+.doc h2 {
+	font-size: 20px;
+	line-height: 1.4;
+	margin: 1.7em 0 .5em;
+	padding-bottom: .2em;
+	border-bottom: 1px solid var(--c-line);
+}
+
+.doc h3 { font-size: 17px; line-height: 1.45; margin: 1.4em 0 .4em; }
+
+.doc p { margin: .9em 0; }
+
+.doc ul, .doc ol { margin: .9em 0; padding-left: 1.6em; }
+
+.doc li { margin: .25em 0; }
+
+.doc li > ul, .doc li > ol { margin: .25em 0; }
+
+.doc hr { border: 0; border-top: 1px solid var(--c-line); margin: 2em 0; }
+
+.doc .table-wrap { overflow-x: auto; margin: 1em 0; }
+
+.doc blockquote {
+	margin: 1em 0;
+	padding: .1em 1em;
+	border-left: 3px solid var(--c-nav);
+	background: var(--c-soft);
+}
+
+.doc blockquote > :first-child { margin-top: .7em; }
+.doc blockquote > :last-child { margin-bottom: .7em; }
+
+.doc code {
+	font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Courier New", monospace;
+	font-size: .9em;
+	background: var(--c-code-bg);
+	border: 1px solid var(--c-line);
+	border-radius: 4px;
+	padding: .05em .35em;
+}
+
+.doc pre {
+	background: var(--c-code-bg);
+	border: 1px solid var(--c-line);
+	border-radius: 6px;
+	padding: 12px 14px;
+	overflow-x: auto;
+	margin: 1em 0;
+	font-size: 13px;
+	line-height: 1.65;
+}
+
+.doc pre code { background: none; border: 0; padding: 0; font-size: inherit; }
+
+.doc img { max-width: 100%; height: auto; }
+
+.doc .status { color: var(--c-muted); }

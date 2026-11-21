@@ -1,0 +1,332 @@
+/* ==========================================================================
+   铟子vinds — 子站共用样式
+   与文章站/小站同一套配色: 白天白底黑字, 夜间黑底白字
+   ========================================================================== */
+
+:root {
+	--c-nav: #08f;
+	--c-nav-text: #fff;
+	--c-nav-hover: #0ff;
+
+	--c-bg: #fff;
+	--c-text: #000;
+	--c-muted: #595959;
+	--c-line: #d9d9d9;
+	--c-soft: #f5f5f5;
+	--c-code-bg: #f6f6f6;
+	--c-link: #0645ad;
+	--c-hover-bg: #f2f8ff;
+
+	--nav-h: 48px;
+
+	color-scheme: light;
+}
+
+html[data-theme="dark"] {
+	--c-bg: #000;
+	--c-text: #fff;
+	--c-muted: #a3a3a3;
+	--c-line: #333;
+	--c-soft: #141414;
+	--c-code-bg: #131313;
+	--c-link: #6cb6ff;
+	--c-hover-bg: #111;
+
+	color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+	margin: 0;
+	background: var(--c-bg);
+	color: var(--c-text);
+	font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+		"PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+	font-size: 16px;
+	line-height: 1.75;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+main { flex: 1 1 auto; }
+
+/* --------------------------------------------------------------- 导航栏 */
+
+.nav {
+	position: sticky;
+	top: 0;
+	z-index: 30;
+	min-height: var(--nav-h);
+	flex: 0 0 auto;
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	padding: 0 16px;
+	background: var(--c-nav);
+	color: var(--c-nav-text);
+}
+
+.nav a {
+	color: var(--c-nav-text);
+	text-decoration: none;
+	transition: color .5s ease;
+}
+
+.nav a:hover, .nav a:focus {
+	color: var(--c-nav-hover);
+	text-decoration: none;   /* 导航栏里悬浮只变色, 不要下划线 */
+}
+
+.nav .brand {
+	font-size: 17px;
+	font-weight: 700;
+	white-space: nowrap;
+}
+
+.nav .spacer { flex: 1 1 auto; }
+
+.nav .navlink { white-space: nowrap; }
+
+.theme-btn,
+.menu-btn {
+	font: inherit;
+	line-height: 1;
+	color: var(--c-nav-text);
+	background: transparent;
+	border: 1px solid rgba(255, 255, 255, .55);
+	border-radius: 6px;
+	padding: 5px 9px;
+	cursor: pointer;
+	transition: color .5s ease, border-color .5s ease;
+}
+
+.theme-btn:hover,
+.menu-btn:hover { border-color: var(--c-nav-hover); color: var(--c-nav-hover); }
+
+.menu-btn { display: none; }
+
+/* 主题按钮里的小图标: 亮的时候显示月亮, 暗的时候显示太阳 */
+.theme-btn .i-dark { display: none; }
+html[data-theme="dark"] .theme-btn .i-light { display: none; }
+html[data-theme="dark"] .theme-btn .i-dark { display: inline; }
+
+/* --------------------------------------------------------------- 页面容器 */
+
+.page {
+	width: 100%;
+	max-width: 860px;
+	margin: 0 auto;
+	padding: 28px 20px 56px;
+}
+
+.page > h1 {
+	font-size: 26px;
+	line-height: 1.35;
+	margin: 0 0 18px;
+}
+
+/* --------------------------------------------------------------- 链接 */
+
+a { color: var(--c-link); text-decoration: none; }
+
+a:hover, a:focus { text-decoration: underline; }
+
+/* --------------------------------------------------------------- 页脚 */
+
+.foot {
+	flex: 0 0 auto;
+	border-top: 1px solid var(--c-line);
+	text-align: center;
+	font-size: 14px;
+	color: var(--c-muted);
+	padding: 18px 16px 26px;
+}
+
+.foot p { margin: 0 0 4px; }
+
+.foot p:last-child { margin-bottom: 0; }
+
+.foot a { color: var(--c-link); }
+
+/* --------------------------------------------------------------- 表格 */
+
+.table-wrap {
+	overflow-x: auto;
+	border: 1px solid var(--c-line);
+	border-radius: 8px;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 15px;
+}
+
+thead th {
+	text-align: left;
+	font-weight: 700;
+	padding: 9px 12px;
+	background: var(--c-soft);
+	border-bottom: 1px solid var(--c-line);
+	white-space: nowrap;
+}
+
+tbody td {
+	padding: 9px 12px;
+	border-bottom: 1px solid var(--c-line);
+	vertical-align: top;
+	word-break: break-word;
+}
+
+tbody tr:last-child td { border-bottom: 0; }
+
+tbody tr:hover { background: var(--c-hover-bg); }
+
+.no-result {
+	border: 1px solid var(--c-line);
+	border-radius: 8px;
+	padding: 40px 16px;
+	text-align: center;
+	color: var(--c-muted);
+}
+
+/* --------------------------------------------------------------- 搜索框 */
+
+.search {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin: 0 0 16px;
+	border: 1px solid var(--c-line);
+	border-radius: 8px;
+	padding: 4px 12px;
+}
+
+.search:focus-within { border-color: var(--c-nav); }
+
+.search .search-icon {
+	flex: 0 0 auto;
+	width: 16px;
+	height: 16px;
+	border: 2px solid var(--c-muted);
+	border-radius: 50%;
+	position: relative;
+	opacity: .6;
+}
+
+.search .search-icon::after {
+	content: "";
+	position: absolute;
+	right: -4px;
+	bottom: -4px;
+	width: 6px;
+	height: 2px;
+	background: var(--c-muted);
+	transform: rotate(45deg);
+}
+
+.search input {
+	flex: 1 1 auto;
+	min-width: 0;
+	font: inherit;
+	color: var(--c-text);
+	background: transparent;
+	border: 0;
+	outline: none;
+	padding: 7px 0;
+}
+
+.search input::placeholder { color: var(--c-muted); opacity: .8; }
+
+.search .clear-btn {
+	flex: 0 0 auto;
+	display: none;
+	font: inherit;
+	line-height: 1;
+	color: var(--c-muted);
+	background: transparent;
+	border: 0;
+	padding: 4px 6px;
+	cursor: pointer;
+	border-radius: 6px;
+	transition: color .5s ease;
+}
+
+.search .clear-btn:hover { color: var(--c-nav); }
+
+/* 兼容旧结构里的圆角搜索容器 */
+.search-container {
+	border: 1px solid var(--c-line);
+	border-radius: 8px;
+	padding: 4px 12px;
+	margin: 0 0 16px;
+}
+
+.search-container:focus-within { border-color: var(--c-nav); }
+
+.search-wrapper { display: flex; align-items: center; gap: 10px; }
+
+.search-wrapper input {
+	flex: 1 1 auto;
+	min-width: 0;
+	font: inherit;
+	color: var(--c-text);
+	background: transparent;
+	border: 0;
+	outline: none;
+	padding: 7px 2px;
+}
+
+.search-wrapper input::placeholder { color: var(--c-muted); opacity: .8; }
+
+/* --------------------------------------------------------------- 方块列表 */
+
+.tiles {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	gap: 14px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.tiles > li, .tiles > .tile {
+	border: 1px solid var(--c-line);
+	border-radius: 8px;
+	padding: 14px 16px;
+}
+
+.tiles .tile-title {
+	display: block;
+	font-size: 17px;
+	font-weight: 700;
+	line-height: 1.4;
+	margin-bottom: 6px;
+}
+
+.tiles .tile-desc {
+	color: var(--c-muted);
+	font-size: 14px;
+	margin: 0;
+}
+
+/* --------------------------------------------------------------- 窄屏 */
+
+@media (max-width: 768px) {
+	.menu-btn { display: inline-block; }
+	.page { padding: 20px 16px 44px; }
+	.page > h1 { font-size: 22px; }
+	table { font-size: 13px; }
+	thead th, tbody td { padding: 8px 8px; }
+	.tiles { grid-template-columns: 1fr; }
+}
+
+/* 中文与西文/数字之间的间距交给text-autospace, 不再手动敲空格 */
+html {
+	text-autospace: normal;
+	text-spacing-trim: normal;
+}

@@ -1,0 +1,114 @@
+/* ==========================================================================
+   单位换算 —— 页面样式
+   方框和首页的专题框同一套观感：1px边框、8px圆角、14/16内边距
+   ========================================================================== */
+
+.uc-wrap {
+	max-width: 860px;
+	margin: 0 auto;
+	padding: 28px 28px 64px;
+}
+
+.uc-wrap h1 {
+	font-size: 26px;
+	line-height: 1.35;
+	margin: 0 0 6px;
+}
+
+.uc-lead {
+	color: var(--c-muted);
+	font-size: 15px;
+	margin: 0 0 22px;
+}
+
+/* --------------------------------------------------------------- 方框 */
+
+.uc-box {
+	border: 1px solid var(--c-line);
+	border-radius: 8px;
+	padding: 14px 16px 16px;
+	margin-bottom: 12px;
+}
+
+.uc-title {
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 1.4;
+	margin: 0 0 10px;
+}
+
+.uc-note {
+	color: var(--c-muted);
+	font-size: 13px;
+	line-height: 1.6;
+	margin: -4px 0 10px;
+}
+
+.uc-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	gap: 3px 26px;
+}
+
+/* --------------------------------------------------------------- 一行 */
+
+.uc-row {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	min-width: 0;
+}
+
+.uc-label {
+	flex: 0 0 150px;
+	min-width: 0;
+	font-size: 14px;
+	line-height: 1.6;
+	cursor: pointer;
+}
+
+.uc-label small {
+	color: var(--c-muted);
+	font-size: 12px;
+	margin-left: 5px;
+}
+
+.uc-input {
+	flex: 1 1 auto;
+	min-width: 0;
+	font: inherit;
+	font-size: 14px;
+	font-variant-numeric: tabular-nums;
+	line-height: 1.5;
+	padding: 3px 8px;
+	color: var(--c-text);
+	background: var(--c-bg);
+	border: 1px solid var(--c-line);
+	border-radius: 6px;
+	transition: border-color .2s ease;
+}
+
+.uc-input:hover { border-color: var(--c-muted); }
+
+.uc-input:focus {
+	outline: none;
+	border-color: var(--c-nav);
+}
+
+.uc-input.uc-active { border-color: var(--c-nav); }
+
+/* --------------------------------------------------------------- 窄屏 */
+
+@media (max-width: 640px) {
+	.uc-wrap { padding: 20px 16px 48px; }
+
+	.uc-grid { grid-template-columns: 1fr; }
+
+	.uc-label { flex-basis: 118px; font-size: 13px; }
+}
+
+/* 中文与西文/数字之间的间距交给text-autospace, 不再手动敲空格 */
+html {
+	text-autospace: normal;
+	text-spacing-trim: normal;
+}

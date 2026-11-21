@@ -1,0 +1,257 @@
+/* ==========================================================================
+   元素周期表 —— 页面样式
+   ========================================================================== */
+
+.pt-layout {
+	display: flex;
+	align-items: flex-start;
+	gap: 16px;
+	padding: 20px 16px 48px;
+}
+
+/* --------------------------------------------------------------- 侧栏 */
+
+.pt-side {
+	flex: 0 0 250px;
+	width: 250px;
+	max-height: calc(100vh - 48px - 24px);
+	overflow-y: auto;
+	position: sticky;
+	top: calc(48px + 12px);
+	border: 1px solid var(--c-line);
+	border-radius: 8px;
+	padding: 12px;
+	background: var(--c-bg);
+}
+
+.pt-side-title {
+	font-size: 14px;
+	font-weight: 700;
+	margin: 0 0 8px;
+}
+
+.pt-field { margin-bottom: 8px; }
+
+.pt-field label {
+	display: flex;
+	align-items: flex-start;
+	gap: 6px;
+	font-size: 12px;
+	line-height: 1.45;
+	cursor: pointer;
+	color: var(--c-text);
+}
+
+.pt-field input[type="checkbox"] {
+	margin: 2px 0 0;
+	flex: 0 0 auto;
+}
+
+.pt-field input[type="search"] {
+	width: 100%;
+	margin-top: 3px;
+	padding: 3px 7px;
+	font: inherit;
+	font-size: 12px;
+	color: var(--c-text);
+	background: var(--c-bg);
+	border: 1px solid var(--c-line);
+	border-radius: 6px;
+}
+
+.pt-field input[type="search"]:focus { outline: 1px solid var(--c-nav); border-color: var(--c-nav); }
+
+.pt-field input[type="search"]::placeholder { color: var(--c-muted); opacity: .75; }
+
+.pt-all {
+	border-top: 1px solid var(--c-line);
+	margin-top: 10px;
+	padding-top: 10px;
+}
+
+.pt-all label { font-size: 13px; font-weight: 700; }
+
+.pt-count {
+	font-size: 12px;
+	color: var(--c-muted);
+	margin: 8px 0 0;
+}
+
+/* --------------------------------------------------------------- 表格 */
+
+.pt-main {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+.pt-scroll {
+	overflow-x: auto;
+	padding-bottom: 6px;
+}
+
+.pt-grid {
+	display: grid;
+	grid-template-columns: repeat(18, minmax(128px, 1fr));
+	gap: 3px;
+	min-width: 2380px;
+}
+
+.pt-gap { height: 10px; }
+
+.el {
+	position: relative;
+	display: block;
+	min-height: 96px;
+	padding: 4px 6px 5px;
+	border: 1px solid var(--c-line);
+	border-radius: 6px;
+	background: var(--c-bg);
+	color: var(--c-text);
+	font-size: 10.5px;
+	line-height: 1.35;
+	text-decoration: none;
+	overflow: hidden;
+	transition: border-color .2s ease, background .2s ease;
+}
+
+.el:hover {
+	border-color: var(--c-nav);
+	background: var(--c-hover-bg);
+	text-decoration: none;
+}
+
+.el.is-hidden { display: none; }
+
+.el-num {
+	position: absolute;
+	top: 3px;
+	right: 5px;
+	font-size: 10px;
+	color: var(--c-muted);
+}
+
+.el-sym {
+	display: block;
+	font-size: 19px;
+	font-weight: 700;
+	line-height: 1.15;
+}
+
+.el-mass {
+	display: block;
+	font-size: 10px;
+	color: var(--c-muted);
+	margin-bottom: 1px;
+}
+
+.el-fields {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+	margin-top: 1px;
+	color: var(--c-muted);
+}
+
+.el-row {
+	display: block;
+	line-height: 1.4;
+	overflow-wrap: anywhere;
+	word-break: break-word;
+}
+
+.el-row > span { margin-right: 6px; }
+.el-row > span:last-child { margin-right: 0; }
+
+.el .rad { color: #d33; }
+
+.el u { text-decoration: underline; text-underline-offset: 1px; }
+
+/* 取消勾选时只是看不见, 位置仍然占着, 格子不会重排 */
+.el [data-field].is-off { visibility: hidden; }
+
+/* --------------------------------------------------------------- 元素详情 */
+
+.el-page {
+	width: 100%;
+	max-width: 760px;
+	margin: 0 auto;
+	padding: 28px 20px 56px;
+}
+
+.el-page h1 {
+	font-size: 30px;
+	line-height: 1.2;
+	margin: 0 0 4px;
+	letter-spacing: .01em;
+}
+
+.el-page .el-tag {
+	font-size: 15px;
+	color: var(--c-muted);
+	margin: 0 0 20px;
+}
+
+.el-page .el-tag strong { color: var(--c-text); font-size: 20px; }
+
+.el-data {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+	gap: 0;
+	margin: 0;
+	border: 1px solid var(--c-line);
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.el-data > div {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	padding: 9px 14px;
+	border-bottom: 1px solid var(--c-line);
+}
+
+.el-data > div:nth-child(odd) { border-right: 1px solid var(--c-line); }
+
+.el-data dt {
+	font-size: 12px;
+	color: var(--c-muted);
+	line-height: 1.4;
+}
+
+.el-data dd {
+	margin: 0;
+	font-size: 15px;
+	line-height: 1.5;
+	word-break: break-word;
+}
+
+.el-data .rad { color: #d33; }
+
+.el-data u { text-decoration: underline; text-underline-offset: 2px; }
+
+.el-back {
+	display: inline-block;
+	font-size: 14px;
+	margin: 0 0 14px;
+}
+
+/* --------------------------------------------------------------- 窄屏 */
+
+@media (max-width: 900px) {
+	.pt-layout { flex-direction: column; padding: 14px 12px 40px; }
+
+	.pt-side {
+		position: static;
+		flex: none;
+		width: 100%;
+		max-height: 46vh;
+	}
+
+	.el-data { grid-template-columns: 1fr; }
+
+	.el-data > div:nth-child(odd) { border-right: 0; }
+}
+
+/* hidden 要压过 .el-sym / .el-num 的 display 规则 */
+[hidden] { display: none !important; }

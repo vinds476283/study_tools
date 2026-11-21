@@ -1,0 +1,39 @@
+# Wolfram|Alpha 代理服务的私密数据
+wolfram_alpha/server/data/*
+!wolfram_alpha/server/data/README.md
+
+# 兜底
+*.appid
+appid.txt
+tokens.json
+usage.json
+*.local.json
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Node
+node_modules/
+npm-debug.log*
+pnpm-lock.yaml
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+
+# 日志与临时文件
+*.log
+*.tmp
+*.bak
+
+# 以前打包GeoGebra留下的临时解压目录
+geogebra_tmp/

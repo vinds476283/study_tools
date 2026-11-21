@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>手写公式识别 | 铟子vinds的学习工具</title>
+	<meta name="description" content="铟子vinds的学习工具 — 手写公式识别成TeX，全程本地推理">
+	<link rel="icon" href="../../favicon.ico">
+	<link rel="apple-touch-icon" href="../../favicon.ico">
+	<link rel="stylesheet" href="../../style.css">
+	<link rel="stylesheet" href="../common.css">
+	<link rel="stylesheet" href="../vendor/katex/katex.min.css">
+	<script src="../../theme.js"></script>
+	<style>
+		#board {
+			display: block;
+			width: 100%;
+			height: auto;
+			aspect-ratio: 2 / 1;
+			background: #111;
+			border: 1px solid var(--c-line);
+			border-radius: 6px;
+			touch-action: none;
+			cursor: crosshair;
+		}
+		.hw-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 10px; }
+	</style>
+</head>
+<body class="page-vc">
+	<header class="nav">
+		<a class="brand" href="../../index.html">铟子vinds</a>
+		<span class="spacer"></span>
+		<a class="navlink" href="../../index.html">主页</a>
+		<button class="theme-btn" id="theme-btn" type="button" aria-label="切换夜间模式">☾</button>
+	</header>
+
+	<main class="main">
+		<div class="vc-wrap">
+			<h1>手写公式识别</h1>
+
+			<div class="vc-split">
+				<section class="vc-panel">
+					<span class="vc-label">手写板</span>
+					<canvas id="board" width="800" height="400"></canvas>
+					<div class="hw-row">
+						<button class="vc-btn primary" id="btn-rec" type="button">识别</button>
+						<button class="vc-btn" id="btn-undo" type="button">撤销一笔</button>
+						<button class="vc-btn" id="btn-clear" type="button">清空</button>
+						<select id="mode" class="vc-select" aria-label="识别模式">
+							<option value="auto">自动</option>
+							<option value="number">数字</option>
+							<option value="expression">表达式</option>
+						</select>
+					</div>
+					<p class="vc-note" id="status">第一次识别要加载模型（约7 MB），之后浏览器会缓存。</p>
+				</section>
+
+				<section class="vc-panel">
+					<label class="vc-label" for="tex">识别结果（TeX，可手动改）</label>
+					<textarea id="tex" class="vc-input" rows="4" spellcheck="false"></textarea>
+					<div class="vc-toolbar">
+						<button class="vc-btn" id="btn-copy" type="button">复制TeX</button>
+					</div>
+					<span class="vc-label" style="margin-top:12px">预览</span>
+					<div id="preview" class="vc-preview"></div>
+				</section>
+			</div>
+		</div>
+	</main>
+
+	<footer class="foot">
+		<p>Copyright © 2026-present | <a href="https://y.vinds.top" target="_blank" rel="noopener noreferrer">铟子vinds</a></p>
+	</footer>
+
+	<script src="vendor/ort/ort.wasm.min.js"></script>
+	<script src="ink.js"></script>
+	<script src="../vendor/katex/katex.min.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>

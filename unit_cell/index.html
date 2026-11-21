@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>晶胞结构 | 铟子vinds的学习工具</title>
+	<meta name="description" content="铟子vinds的学习工具 — 常见晶胞的三维结构">
+	<link rel="icon" href="../favicon.ico">
+	<link rel="apple-touch-icon" href="../favicon.ico">
+	<link rel="stylesheet" href="../style.css">
+	<link rel="stylesheet" href="app.css">
+	<script src="../theme.js"></script>
+</head>
+<body class="page-unit-cell">
+	<header class="nav">
+		<a class="brand" href="../index.html">铟子vinds</a>
+		<span class="spacer"></span>
+		<a class="navlink" href="../index.html">主页</a>
+		<button class="theme-btn" id="theme-btn" type="button" aria-label="切换夜间模式">☾</button>
+	</header>
+
+	<div class="layout">
+		<aside class="side" id="side">
+			<h2><a href="../index.html">晶胞结构</a></h2>
+			<p class="side-home"><a href="../index.html">主页</a></p>
+			<input type="search" id="search" placeholder="搜索化学式…" aria-label="搜索化学式">
+			<ul class="side-tree" id="tree"></ul>
+		</aside>
+
+		<main class="main">
+			<div class="uc-wrap">
+				<h1 id="uc-title">晶胞结构</h1>
+				<p class="uc-meta" id="uc-meta"></p>
+
+				<div class="uc-viewer" id="viewer"></div>
+
+				<div class="uc-toolbar">
+					<button class="uc-btn" id="btn-reset" type="button">复位视角</button>
+					<label class="uc-check"><input type="checkbox" id="opt-ortho" checked> 等轴渲染</label>
+					<label class="uc-check"><input type="checkbox" id="opt-cell" checked> 晶胞边框</label>
+					<label class="uc-check"><input type="checkbox" id="opt-small" checked> 小球</label>
+					<button class="uc-btn" id="btn-measure" type="button">测距</button>
+				</div>
+
+				<div class="uc-axes">
+					<span class="uc-axes-label">视角</span>
+					<button class="uc-btn" data-axis="a" type="button">a</button>
+					<button class="uc-btn" data-axis="b" type="button">b</button>
+					<button class="uc-btn" data-axis="c" type="button">c</button>
+					<button class="uc-btn" data-axis="a*" type="button">a*</button>
+					<button class="uc-btn" data-axis="b*" type="button">b*</button>
+					<button class="uc-btn" data-axis="c*" type="button">c*</button>
+					<input class="uc-hkl" id="hkl" type="text" placeholder="hkl，如1 1 0" aria-label="hkl方向" autocomplete="off">
+					<button class="uc-btn" id="btn-hkl" type="button">投影</button>
+				</div>
+
+				<div class="uc-legend" id="legend"></div>
+
+				<p class="uc-note" id="measure-info"></p>
+				<p class="uc-note">鼠标拖动旋转，滚轮缩放；触屏单指转动、双指捏合缩放。</p>
+			</div>
+		</main>
+	</div>
+
+	<footer class="foot">
+		<p>Copyright © 2026-present | <a href="https://y.vinds.top" target="_blank" rel="noopener noreferrer">铟子vinds</a></p>
+	</footer>
+
+	<script src="vendor/3dmol/3Dmol-min.js"></script>
+	<script src="data.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>

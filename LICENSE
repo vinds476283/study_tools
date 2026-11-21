@@ -1,0 +1,49 @@
+MIT License
+
+Copyright (c) 2026-present 铟子vinds
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+================================================================================
+
+例外与第三方组件 / Exceptions and third-party components
+
+The MIT license above covers everything in this repository except the
+exceptions listed below.
+
+本仓库中除下列例外之外的全部内容 (页面, 样式, 脚本, 数据, 文档等) 均按上面的
+MIT 许可证授权.
+
+1. GeoGebra (geogebra/ 目录)
+   GeoGebra 官方构建, 版权归 GeoGebra GmbH 所有, 按 GeoGebra 自己的许可分发:
+   仅限非商业使用, 且必须署名. 该许可不是 MIT, 也不受本文件中的 MIT 条款约束.
+   许可证全文与说明见 https://www.geogebra.org/license
+   字体等资源另有 OFL / Knuth / dsrom 许可, 见 geogebra/HTML5/5.0/web/fonts/licences/.
+
+2. 其他第三方组件
+   下列组件保留各自的许可证, 许可证原文随对应目录提供:
+
+   - JSME, OpenChemLib, 3Dmol.js (含 GLmol, Three.js, jQuery)   BSD-3-Clause / MIT
+   - KaTeX, mhchem, MathLive, marked                            MIT
+   - ink-on                                                      Apache-2.0
+   - ONNX Runtime Web                                            MIT
+   - Orthonym, OPSIN, py2opsin                                   MIT
+   - chemical_data_query                                         MIT
+
+   第三方组件的完整清单与链接见 README.md 中的 "使用的开源组件" 表格.

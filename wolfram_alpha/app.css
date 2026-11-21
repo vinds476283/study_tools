@@ -1,0 +1,130 @@
+/* ==========================================================================
+   Wolfram|Alpha 页面样式
+   ========================================================================== */
+
+.wa-wrap {
+	max-width: 760px;
+	margin: 0 auto;
+	padding: 28px 28px 64px;
+}
+
+.wa-wrap h1 {
+	font-size: 26px;
+	line-height: 1.35;
+	margin: 0 0 18px;
+}
+
+.wa-panel {
+	border: 1px solid var(--c-line);
+	border-radius: 8px;
+	padding: 14px 16px 16px;
+	margin-bottom: 12px;
+}
+
+.wa-label {
+	display: block;
+	font-size: 13px;
+	color: var(--c-muted);
+	margin: 0 0 6px;
+}
+
+.wa-input {
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+	font: inherit;
+	font-size: 15px;
+	line-height: 1.6;
+	color: var(--c-text);
+	background: var(--c-bg);
+	border: 1px solid var(--c-line);
+	border-radius: 6px;
+	padding: 8px 10px;
+	resize: vertical;
+}
+
+.wa-input:focus {
+	outline: none;
+	border-color: var(--c-nav);
+}
+
+.wa-toolbar {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	margin-top: 10px;
+}
+
+.wa-btn {
+	font: inherit;
+	font-size: 14px;
+	line-height: 1.4;
+	padding: 5px 12px;
+	color: var(--c-text);
+	background: var(--c-bg);
+	border: 1px solid var(--c-line);
+	border-radius: 6px;
+	cursor: pointer;
+	white-space: nowrap;
+	transition: color .2s ease, border-color .2s ease;
+}
+
+.wa-btn:hover:not(:disabled) { color: var(--c-nav); border-color: var(--c-nav); }
+
+.wa-btn.primary {
+	color: #fff;
+	background: var(--c-nav);
+	border-color: var(--c-nav);
+}
+
+.wa-btn.primary:hover:not(:disabled) { opacity: .88; color: #fff; }
+
+.wa-btn:disabled { opacity: .45; cursor: default; }
+
+.wa-hint {
+	font-size: 12px;
+	color: var(--c-muted);
+}
+
+.wa-hint.good { color: #2a7; }
+
+.wa-hint.bad { color: #d33; }
+
+.wa-hint.bad a { color: #d33; text-decoration: underline; text-underline-offset: 2px; }
+
+.wa-hint.bad a:hover { color: #b00; }
+
+.wa-note {
+	font-size: 13px;
+	line-height: 1.6;
+	color: var(--c-muted);
+	margin: 8px 0 0;
+}
+
+.wa-note.bad { color: #d33; }
+
+.wa-note.good { color: var(--c-text); }
+
+.wa-output {
+	margin: 0;
+	min-height: 120px;
+	max-height: 60vh;
+	overflow: auto;
+	padding: 12px 14px;
+	font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Courier New", monospace;
+	font-size: 13.5px;
+	line-height: 1.65;
+	white-space: pre-wrap;
+	word-break: break-word;
+	color: var(--c-text);
+	background: var(--c-soft);
+	border: 1px solid var(--c-line);
+	border-radius: 6px;
+}
+
+.wa-output.bad { color: #d33; }
+
+@media (max-width: 640px) {
+	.wa-wrap { padding: 20px 16px 48px; }
+}

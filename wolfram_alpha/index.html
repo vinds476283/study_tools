@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Wolfram|Alpha | 铟子vinds的学习工具</title>
+	<meta name="description" content="铟子vinds 的学习工具 — 通过 token 调用 Wolfram|Alpha 计算">
+	<link rel="icon" href="../favicon.ico">
+	<link rel="apple-touch-icon" href="../favicon.ico">
+	<link rel="stylesheet" href="../style.css">
+	<link rel="stylesheet" href="app.css">
+	<script src="../theme.js"></script>
+</head>
+<body class="page-wa">
+	<header class="nav">
+		<a class="brand" href="../index.html">铟子vinds</a>
+		<span class="spacer"></span>
+		<a class="navlink" href="../index.html">主页</a>
+		<button class="theme-btn" id="theme-btn" type="button" aria-label="切换夜间模式">☾</button>
+	</header>
+
+	<main class="main">
+		<div class="wa-wrap">
+			<h1>Wolfram|Alpha</h1>
+
+			<section class="wa-panel">
+				<span class="wa-label">连通性测试</span>
+				<div class="wa-toolbar">
+					<button class="wa-btn" id="btn-ping" type="button">连通性测试</button>
+					<span class="wa-hint" id="ping-note">先测一下服务器能不能连上测试地址</span>
+				</div>
+			</section>
+
+			<section class="wa-panel">
+				<label class="wa-label" for="token">token</label>
+				<input class="wa-input" id="token" type="text" autocomplete="off" spellcheck="false" placeholder="找老师要一个 token">
+				<p class="wa-note" id="quota">每个 token 每天可以计算 5 次。</p>
+			</section>
+
+			<section class="wa-panel">
+				<label class="wa-label" for="query">要计算的内容</label>
+				<textarea class="wa-input" id="query" rows="3" spellcheck="false" placeholder="例如：integrate x^2 sin x dx"></textarea>
+				<div class="wa-toolbar">
+					<button class="wa-btn primary" id="btn-run" type="button" disabled>计算</button>
+					<button class="wa-btn" id="btn-clear" type="button">清空</button>
+					<span class="wa-hint">Ctrl + Enter 也能计算</span>
+				</div>
+			</section>
+
+			<section class="wa-panel">
+				<span class="wa-label">结果</span>
+				<pre class="wa-output" id="output"></pre>
+			</section>
+		</div>
+	</main>
+
+	<footer class="foot">
+		<p>Copyright © 2026-present | <a href="https://y.vinds.top" target="_blank" rel="noopener noreferrer">铟子vinds</a></p>
+	</footer>
+
+	<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+/* ==========================================================================
+   可视化代码 —— 四个小工具共用的页面样式
+   方框沿用首页专题框的观感：1px边框、8px圆角
+   ========================================================================== */
+
+.vc-wrap {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 28px 28px 64px;
+}
+
+.vc-wrap h1 {
+	font-size: 26px;
+	line-height: 1.35;
+	margin: 0 0 6px;
+}
+
+.vc-lead {
+	color: var(--c-muted);
+	font-size: 15px;
+	line-height: 1.7;
+	margin: 0 0 20px;
+}
+
+.vc-split {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 12px;
+	align-items: start;
+}
+
+.vc-panel {
+	border: 1px solid var(--c-line);
+	border-radius: 8px;
+	padding: 14px 16px 16px;
+	margin-bottom: 12px;
+}
+
+.vc-label {
+	display: block;
+	font-size: 13px;
+	color: var(--c-muted);
+	margin: 0 0 6px;
+}
+
+.vc-input {
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+	font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Courier New", monospace;
+	font-size: 14px;
+	line-height: 1.65;
+	color: var(--c-text);
+	background: var(--c-bg);
+	border: 1px solid var(--c-line);
+	border-radius: 6px;
+	padding: 8px 10px;
+	resize: vertical;
+}
+
+.vc-input:focus {
+	outline: none;
+	border-color: var(--c-nav);
+}
+
+.vc-preview {
+	min-height: 130px;
+	padding: 12px 10px;
+	border: 1px solid var(--c-line);
+	border-radius: 6px;
+	overflow-x: auto;
+}
+
+.vc-preview > * + * { margin-top: 14px; }
+
+.vc-toolbar {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	margin-top: 10px;
+}
+
+.vc-btn {
+	font: inherit;
+	font-size: 14px;
+	line-height: 1.4;
+	padding: 5px 11px;
+	color: var(--c-text);
+	background: var(--c-bg);
+	border: 1px solid var(--c-line);
+	border-radius: 6px;
+	cursor: pointer;
+	white-space: nowrap;
+	transition: color .3s ease, border-color .3s ease;
+}
+
+.vc-btn:hover { color: var(--c-nav); border-color: var(--c-nav); }
+
+.vc-btn[disabled] { opacity: .5; cursor: default; }
+
+.vc-btn.primary {
+	color: #fff;
+	background: var(--c-nav);
+	border-color: var(--c-nav);
+}
+
+.vc-btn.primary:hover { color: #fff; opacity: .88; }
+
+.vc-check {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+	font-size: 14px;
+	color: var(--c-text);
+	cursor: pointer;
+}
+
+select.vc-select {
+	font: inherit;
+	font-size: 14px;
+	padding: 4px 6px;
+	color: var(--c-text);
+	background: var(--c-bg);
+	border: 1px solid var(--c-line);
+	border-radius: 6px;
+}
+
+.vc-note {
+	font-size: 13px;
+	line-height: 1.6;
+	color: var(--c-muted);
+	margin: 8px 0 0;
+}
+
+.vc-error { color: #d33; }
+
+/* --------------------------------------------------------------- 窄屏 */
+
+@media (max-width: 820px) {
+	.vc-wrap { padding: 20px 16px 48px; }
+	.vc-split { grid-template-columns: 1fr; }
+}
+
+/* 中文与西文/数字之间的间距交给text-autospace, 不再手动敲空格 */
+html {
+	text-autospace: normal;
+	text-spacing-trim: normal;
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>有机分子结构式与名称 | 铟子vinds的学习工具</title>
+	<meta name="description" content="铟子vinds的学习工具 — 绘制有机分子、结构式与名称互查、查看三维模型">
+	<link rel="icon" href="../favicon.ico">
+	<link rel="apple-touch-icon" href="../favicon.ico">
+	<link rel="stylesheet" href="../style.css">
+	<link rel="stylesheet" href="app.css">
+	<script src="../theme.js"></script>
+</head>
+<body class="page-organic">
+	<header class="nav">
+		<a class="brand" href="../index.html">铟子vinds</a>
+		<span class="spacer"></span>
+		<a class="navlink" href="../index.html">主页</a>
+		<button class="theme-btn" id="theme-btn" type="button" aria-label="切换夜间模式">☾</button>
+	</header>
+
+	<main class="org-main">
+		<section class="org-canvas">
+			<div id="jsme-host" class="org-jsme"></div>
+		</section>
+
+		<aside class="org-side">
+			<section class="panel">
+				<h2>结构 ⇄ 名称</h2>
+				<div class="field">
+					<input type="text" id="q" placeholder="名称 / 分子式 / SMILES，如 乙醇、C2H6O" autocomplete="off" maxlength="120">
+					<button class="btn primary" id="btn-find" type="button">查找</button>
+					<button class="btn" id="btn-net-struct" type="button" title="输入框有名称 → 转成结构；输入框空着 → 给画布上的结构命名">联网转换</button>
+				</div>
+				<p class="hint" id="hint"></p>
+				<div id="hits" class="hits hidden"></div>
+				<dl class="info-list" id="info" hidden></dl>
+				<div class="field net-row" id="net-row" hidden>
+					<button class="btn" id="btn-net-name" type="button" title="用局域网里的转换服务按IUPAC规则命名">联网查IUPAC名</button>
+					<button class="btn" id="btn-copy" type="button" title="把当前分子的IUPAC名复制到剪贴板">复制IUPAC名</button>
+				</div>
+			</section>
+
+			<section class="panel">
+				<h2>三维模型</h2>
+				<div class="field">
+					<button class="btn primary" id="btn-3d" type="button">生成三维模型</button>
+				</div>
+				<p class="hint" id="r3d-status"></p>
+				<div class="viewer" id="viewer"></div>
+			</section>
+
+			<section class="panel">
+				<h2>碳原子标号</h2>
+				<div class="field">
+					<button class="btn" id="btn-carbon-num" type="button">碳原子标号</button>
+				</div>
+				<p class="hint" id="carbon-num-hint">此处的碳原子标号是“规范序”，不是IUPAC位次，在与他人或生成式人工智能交流时请注意说明“根据RDKit.js”的标号。</p>
+				<div class="cn-view" id="carbon-num-view" hidden></div>
+			</section>
+		</aside>
+	</main>
+
+	<script src="data.js"></script>
+	<script src="app.js"></script>
+	<script src="carbon_num.js"></script>
+	<script src="vendor/jsme/jsme.nocache.js"></script>
+</body>
+</html>

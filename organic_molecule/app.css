@@ -1,0 +1,245 @@
+/* ==========================================================================
+   有机分子结构式与名称 — 页面样式
+   版式参考GeoGebra页: 标题栏下面整块是工作区, 右边是可滚动的小面板
+   ========================================================================== */
+
+html, body { height: 100%; }
+
+body.page-organic { overflow: hidden; }
+
+.org-main {
+	position: fixed;
+	top: var(--nav-h);
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	align-items: stretch;
+}
+
+/* --------------------------------------------------------------- 画布区 */
+
+.org-canvas {
+	flex: 1 1 auto;
+	min-width: 0;
+	position: relative;
+	background: var(--c-bg);
+}
+
+.org-jsme { position: absolute; inset: 0; }
+
+/* JSME的画布和工具栏是GWT画的, 颜色写死在内联样式里,
+   所以夜间模式直接整体反相 (再转一次色相, 让杂原子的颜色不至于变成怪色) */
+html[data-theme="dark"] .org-jsme {
+	filter: invert(1) hue-rotate(180deg);
+}
+
+/* 反相会把纯白背景变成纯黑, 单独把它调成页面底色, 免得死黑 */
+html[data-theme="dark"] .org-canvas { background: #000; }
+
+/* --------------------------------------------------------------- 侧栏 */
+
+.org-side {
+	flex: 0 0 376px;
+	max-width: 376px;
+	overflow-y: auto;
+	padding: 14px;
+	border-left: 1px solid var(--c-line);
+}
+
+.panel {
+	border: 1px solid var(--c-line);
+	border-radius: 8px;
+	padding: 12px 14px 14px;
+	margin-bottom: 12px;
+}
+
+.panel h2 {
+	font-size: 15px;
+	font-weight: 700;
+	margin: 0 0 10px;
+}
+
+.field {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+input[type="text"] {
+	flex: 1 1 140px;
+	min-width: 0;
+	font: inherit;
+	font-size: 14px;
+	padding: 6px 9px;
+	color: var(--c-text);
+	background: var(--c-bg);
+	border: 1px solid var(--c-line);
+	border-radius: 6px;
+}
+
+input[type="text"]:focus { outline: 1px solid var(--c-nav); }
+
+.btn {
+	font: inherit;
+	font-size: 14px;
+	line-height: 1.4;
+	padding: 6px 11px;
+	color: var(--c-text);
+	background: var(--c-bg);
+	border: 1px solid var(--c-line);
+	border-radius: 6px;
+	cursor: pointer;
+	white-space: nowrap;
+	transition: color .3s ease, border-color .3s ease;
+}
+
+.btn:hover { color: var(--c-nav); border-color: var(--c-nav); }
+
+.btn.primary {
+	color: #fff;
+	background: var(--c-nav);
+	border-color: var(--c-nav);
+}
+
+.btn.primary:hover { color: #fff; opacity: .88; }
+
+.btn[disabled] { opacity: .5; cursor: default; }
+
+.hint {
+	font-size: 13px;
+	line-height: 1.6;
+	color: var(--c-muted);
+	margin: 8px 0 0;
+}
+
+.hint:empty { display: none; }
+
+.hidden { display: none !important; }
+
+/* 多个候选 */
+.hits { margin: 8px 0 0; display: flex; flex-wrap: wrap; gap: 6px; }
+
+.hits button {
+	font: inherit;
+	font-size: 13px;
+	padding: 3px 9px;
+	color: var(--c-link);
+	background: var(--c-bg);
+	border: 1px solid var(--c-line);
+	border-radius: 999px;
+	cursor: pointer;
+}
+
+.hits button:hover { border-color: var(--c-nav); }
+
+/* 结构信息 */
+.info-list {
+	margin: 10px 0 0;
+	font-size: 14px;
+	line-height: 1.7;
+}
+
+.info-list > div {
+	display: flex;
+	gap: 10px;
+	padding: 1px 0;
+}
+
+.info-list dt {
+	flex: 0 0 92px;
+	color: var(--c-muted);
+}
+
+.info-list dd {
+	margin: 0;
+	min-width: 0;
+	word-break: break-all;
+}
+
+.info-list dd.mono {
+	font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+	font-size: 13px;
+}
+
+/* 联网转换那一行 */
+.net-row {
+	margin-top: 12px;
+	padding-top: 10px;
+	border-top: 1px dashed var(--c-line);
+	align-items: center;
+}
+
+.net-hint { margin: 0; flex: 1 1 120px; font-size: 12px; }
+
+/* 三维视图 */
+.viewer {
+	position: relative;
+	height: 250px;
+	margin-top: 10px;
+	overflow: hidden;
+	background: #fff;
+	border: 1px solid var(--c-line);
+	border-radius: 6px;
+}
+
+html[data-theme="dark"] .viewer { background: #000; }
+
+.viewer .viewer-fallback {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px;
+	font-size: 13px;
+	text-align: center;
+	color: #888;
+}
+
+/* --------------------------------------------------------------- 窄屏 */
+
+@media (max-width: 900px) {
+	body.page-organic { overflow: auto; }
+
+	.org-main {
+		position: static;
+		display: block;
+	}
+
+	.org-canvas {
+		height: 58vh;
+		min-height: 380px;
+		border-bottom: 1px solid var(--c-line);
+	}
+
+	.org-side {
+		flex: none;
+		max-width: none;
+		border-left: 0;
+		padding: 12px;
+	}
+}
+
+/* --------------------------------------------------------------- 碳原子标号 */
+
+.cn-view {
+	margin-top: 10px;
+	padding: 8px;
+	border: 1px solid var(--c-line);
+	border-radius: 6px;
+	background: var(--c-bg);
+}
+
+.cn-view svg {
+	display: block;
+	width: 100%;
+	height: auto;
+	max-height: 280px;
+}
+/* 中文与西文/数字之间的间距交给text-autospace, 不再手动敲空格 */
+html {
+	text-autospace: normal;
+	text-spacing-trim: normal;
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Markdown渲染 | 铟子vinds的学习工具</title>
+	<meta name="description" content="铟子vinds的学习工具 — Markdown实时渲染">
+	<link rel="icon" href="../../favicon.ico">
+	<link rel="apple-touch-icon" href="../../favicon.ico">
+	<link rel="stylesheet" href="../../style.css">
+	<link rel="stylesheet" href="../common.css">
+	<script src="../../theme.js"></script>
+	<style>
+		/* 预览区的排版 */
+		.md-body { line-height: 1.75; }
+		.md-body > :first-child { margin-top: 0; }
+		.md-body h1 { font-size: 24px; margin: 1.1em 0 .4em; }
+		.md-body h2 { font-size: 20px; margin: 1.1em 0 .4em; border-bottom: 1px solid var(--c-line); padding-bottom: .2em; }
+		.md-body h3 { font-size: 17px; margin: 1em 0 .3em; }
+		.md-body p { margin: .7em 0; }
+		.md-body ul, .md-body ol { margin: .7em 0; padding-left: 1.6em; }
+		.md-body li { margin: .2em 0; }
+		.md-body blockquote { margin: .8em 0; padding: .1em 1em; border-left: 3px solid var(--c-nav); background: var(--c-soft); }
+		.md-body code {
+			font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+			font-size: .9em;
+			background: var(--c-soft);
+			border: 1px solid var(--c-line);
+			border-radius: 4px;
+			padding: .05em .35em;
+		}
+		.md-body pre { background: var(--c-soft); border: 1px solid var(--c-line); border-radius: 6px; padding: 10px 12px; overflow-x: auto; }
+		.md-body pre code { background: none; border: 0; padding: 0; }
+		.md-body table { border-collapse: collapse; width: 100%; font-size: 14px; margin: .8em 0; }
+		.md-body th, .md-body td { border: 1px solid var(--c-line); padding: 5px 9px; text-align: left; }
+		.md-body th { background: var(--c-soft); }
+		.md-body a { color: var(--c-link); }
+		.md-body hr { border: 0; border-top: 1px solid var(--c-line); margin: 1.4em 0; }
+		.md-body img { max-width: 100%; }
+	</style>
+</head>
+<body class="page-vc">
+	<header class="nav">
+		<a class="brand" href="../../index.html">铟子vinds</a>
+		<span class="spacer"></span>
+		<a class="navlink" href="../../index.html">主页</a>
+		<button class="theme-btn" id="theme-btn" type="button" aria-label="切换夜间模式">☾</button>
+	</header>
+
+	<main class="main">
+		<div class="vc-wrap">
+			<h1>Markdown渲染</h1>
+			<p class="vc-lead">左边写Markdown，右边实时预览，支持GFM的表格、删除线、任务列表。渲染前会过滤掉脚本等危险内容。</p>
+
+			<div class="vc-split">
+				<section class="vc-panel">
+					<label class="vc-label" for="md">Markdown源码</label>
+					<textarea id="md" class="vc-input" rows="18" spellcheck="false"># 标题
+
+一段普通文字，带 **粗体**、*斜体*、`行内代码` 和 [链接](https://example.com)。
+
+## 列表
+
+- 第一项
+- 第二项
+  - 嵌套一项
+- 第三项
+
+## 表格
+
+| 单位 | 换算 |
+| --- | --- |
+| 1米 | 100厘米 |
+| 1千米 | 1000米 |
+
+## 代码
+
+```js
+console.log('hello');
+```
+
+> 引用一段话。
+
+---
+
+- [x] 已完成的待办
+- [ ] 未完成的待办</textarea>
+					<div class="vc-toolbar">
+						<button class="vc-btn primary" id="btn-copy-md" type="button">复制Markdown</button>
+						<button class="vc-btn" id="btn-clear" type="button">清空</button>
+					</div>
+					<p class="vc-note" id="status"></p>
+				</section>
+
+				<section class="vc-panel">
+					<span class="vc-label">预览</span>
+					<div id="out" class="vc-preview md-body"></div>
+				</section>
+			</div>
+		</div>
+	</main>
+
+	<footer class="foot">
+		<p>Copyright © 2026-present | <a href="https://y.vinds.top" target="_blank" rel="noopener noreferrer">铟子vinds</a></p>
+	</footer>
+
+	<script src="../vendor/marked/marked.umd.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>

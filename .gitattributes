@@ -1,0 +1,30 @@
+# 换行与二进制文件处理
+#
+# 为什么要这个文件：Windows 上 git 默认 core.autocrlf=true，仓库里存 LF、
+# 检出时转成 CRLF。别人克隆时如果没开这个设置，.bat 会变成纯 LF，
+# cmd 解析就会出问题。在这里写死，谁克隆都一样。
+
+# 默认交给 git 判断，文本文件按 LF 存
+* text=auto
+
+# Windows 批处理必须是 CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Linux 脚本保持 LF
+*.sh text eol=lf
+
+# 二进制文件，不要做任何换行转换
+*.png   binary
+*.gif   binary
+*.jpg   binary
+*.jpeg  binary
+*.ico   binary
+*.wasm  binary
+*.onnx  binary
+*.wav   binary
+*.mp3   binary
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+*.otf   binary

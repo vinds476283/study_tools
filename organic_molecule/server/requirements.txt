@@ -1,0 +1,5 @@
+# 名称转换服务依赖（均为开源许可）
+#   orthonym  MIT结构 -> IUPAC名（内部用OPSIN校验，需要Java）
+#   py2opsin  MIT  IUPAC名 -> 结构（OPSIN的Python包装，需要Java）
+orthonym>=1.1.0
+py2opsin>=1.2.0

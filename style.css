@@ -1,0 +1,365 @@
+/* ==========================================================================
+   铟子vinds学习工具 — 全站共用样式
+   白天模式: 白底黑字    夜间模式: 黑底白字
+   ========================================================================== */
+
+:root {
+	--c-nav: #08f;
+	--c-nav-text: #fff;
+	--c-nav-hover: #0ff;
+
+	--c-bg: #fff;
+	--c-text: #000;
+	--c-muted: #595959;
+	--c-line: #d9d9d9;
+	--c-link: #0645ad;
+	--c-soft: #f2f2f2;
+
+	--nav-h: 48px;
+	--side-w: 300px;
+
+	color-scheme: light;
+}
+
+html[data-theme="dark"] {
+	--c-bg: #000;
+	--c-text: #fff;
+	--c-muted: #a3a3a3;
+	--c-line: #333;
+	--c-link: #6cb6ff;
+	--c-soft: #1c1c1c;
+
+	color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+	margin: 0;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	background: var(--c-bg);
+	color: var(--c-text);
+	font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+		"PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+	font-size: 16px;
+	line-height: 1.75;
+}
+
+main { flex: 1 1 auto; }
+
+/* --------------------------------------------------------------- 导航栏 */
+
+.nav {
+	position: sticky;
+	top: 0;
+	z-index: 30;
+	flex: 0 0 auto;
+	height: var(--nav-h);
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	padding: 0 16px;
+	background: var(--c-nav);
+	color: var(--c-nav-text);
+}
+
+.nav a {
+	color: var(--c-nav-text);
+	text-decoration: none;
+	transition: color .5s ease;
+}
+
+.nav a:hover, .nav a:focus {
+	color: var(--c-nav-hover);
+	text-decoration: none;   /* 导航栏里悬浮只变色, 不要下划线 */
+}
+
+.nav .brand {
+	font-size: 17px;
+	font-weight: 700;
+	white-space: nowrap;
+}
+
+.nav .spacer { flex: 1 1 auto; }
+
+.nav .navlink { white-space: nowrap; }
+
+/* 居中署名: 只在GeoGebra页用到 */
+.nav .credit {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	font-size: 14px;
+	white-space: nowrap;
+}
+
+.theme-btn {
+	font: inherit;
+	line-height: 1;
+	color: var(--c-nav-text);
+	background: transparent;
+	border: 1px solid rgba(255, 255, 255, .55);
+	border-radius: 6px;
+	padding: 5px 9px;
+	cursor: pointer;
+	transition: color .5s ease, border-color .5s ease;
+}
+
+.theme-btn:hover { border-color: var(--c-nav-hover); color: var(--c-nav-hover); }
+
+/* --------------------------------------------------------------- 首页 */
+
+.home {
+	max-width: 860px;
+	margin: 0 auto;
+	padding: 28px 28px 64px;
+}
+
+.home h1 { font-size: 26px; margin: 0 0 26px; }
+
+.subject-list { list-style: none; margin: 0; padding: 0; }
+
+.subject-list > li {
+	border: 1px solid var(--c-line);
+	border-radius: 8px;
+	padding: 14px 16px;
+	margin-bottom: 12px;
+}
+
+.subject-list .subject-title {
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 1.4;
+	margin: 0;
+}
+
+.subject-items { margin: 6px 0 0; }
+
+.subject-items a { font-size: 15px; }
+
+/* --------------------------------------------------------------- 占位页 */
+
+.placeholder {
+	max-width: 860px;
+	margin: 0 auto;
+	padding: 72px 28px 96px;
+	text-align: center;
+}
+
+.placeholder h1 { font-size: 24px; margin: 0 0 6px; }
+
+.placeholder p { color: var(--c-muted); margin: 0; }
+
+/* --------------------------------------------------------------- 链接 */
+
+a { color: var(--c-link); text-decoration: none; }
+
+a:hover, a:focus { text-decoration: underline; }
+
+/* --------------------------------------------------------------- 页脚 */
+
+.foot {
+	flex: 0 0 auto;
+	border-top: 1px solid var(--c-line);
+	text-align: center;
+	font-size: 14px;
+	color: var(--c-muted);
+	padding: 18px 16px 26px;
+}
+
+.foot p { margin: 0; }
+
+.foot a { color: var(--c-link); }
+
+/* --------------------------------------------------------------- 文档页 */
+
+.doc {
+	max-width: 860px;
+	margin: 0 auto;
+	padding: 28px 28px 64px;
+}
+
+.doc h1 { font-size: 26px; line-height: 1.35; margin: 0 0 4px; }
+
+/* 标题下面那一行小字 */
+.doc h1 + p { color: var(--c-muted); margin: 0 0 26px; }
+
+.doc .status { color: var(--c-muted); }
+
+.doc h2 {
+	font-size: 20px;
+	line-height: 1.4;
+	margin: 1.7em 0 .5em;
+	padding-bottom: .2em;
+	border-bottom: 1px solid var(--c-line);
+	scroll-margin-top: calc(var(--nav-h) + 12px);
+}
+
+.doc h3 { font-size: 17px; line-height: 1.45; margin: 1.4em 0 .4em; }
+
+.doc h4 { font-size: 15.5px; line-height: 1.5; margin: 1.3em 0 .35em; }
+
+.doc h5, .doc h6 { font-size: 15px; margin: 1.2em 0 .3em; color: var(--c-text); }
+
+.doc p { margin: .9em 0; }
+
+.doc ul, .doc ol { margin: .9em 0; padding-left: 1.6em; }
+
+.doc li { margin: .25em 0; }
+
+.doc li > ul, .doc li > ol { margin: .25em 0; }
+
+.doc hr { border: 0; border-top: 1px solid var(--c-line); margin: 2em 0; }
+
+.doc code {
+	font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Courier New", monospace;
+	font-size: .9em;
+	background: var(--c-soft);
+	border: 1px solid var(--c-line);
+	border-radius: 4px;
+	padding: .05em .35em;
+}
+
+.doc pre {
+	background: var(--c-soft);
+	border: 1px solid var(--c-line);
+	border-radius: 6px;
+	padding: 12px 14px;
+	overflow-x: auto;
+	margin: 1em 0;
+	font-size: 13px;
+	line-height: 1.65;
+}
+
+.doc pre code { background: none; border: 0; padding: 0; font-size: inherit; }
+
+.doc .table-wrap { overflow-x: auto; margin: 1em 0; }
+
+.doc table { border-collapse: collapse; width: 100%; font-size: 14px; }
+
+.doc th, .doc td { border: 1px solid var(--c-line); padding: 6px 10px; text-align: left; vertical-align: top; }
+
+.doc th { background: var(--c-soft); font-weight: 700; white-space: nowrap; }
+
+.doc blockquote {
+	margin: 1em 0;
+	padding: .1em 1em;
+	border-left: 3px solid var(--c-nav);
+	background: var(--c-soft);
+}
+
+.doc blockquote > :first-child { margin-top: .7em; }
+.doc blockquote > :last-child { margin-bottom: .7em; }
+
+/* --------------------------------------------------------------- 带侧栏的页面
+   骨架照抄article_web的文档导航栏 */
+
+.layout { display: flex; align-items: flex-start; }
+
+.side {
+	flex: 0 0 var(--side-w);
+	width: var(--side-w);
+	border-right: 1px solid var(--c-line);
+	padding: 16px 12px 40px;
+	position: sticky;
+	top: var(--nav-h);
+	max-height: calc(100vh - var(--nav-h));
+	overflow-y: auto;
+}
+
+.side h2 {
+	margin: 0 0 4px;
+	font-size: 15px;
+	font-weight: 700;
+}
+
+.side h2 a { color: var(--c-text); }
+
+.side .side-home { font-size: 13px; color: var(--c-muted); margin: 0; }
+
+.side input[type="search"] {
+	width: 100%;
+	margin: 10px 0 12px;
+	padding: 5px 8px;
+	font: inherit;
+	font-size: 13px;
+	color: var(--c-text);
+	background: var(--c-bg);
+	border: 1px solid var(--c-line);
+	border-radius: 6px;
+}
+
+.side input[type="search"]:focus { outline: 1px solid var(--c-nav); }
+
+.side .side-tree { list-style: none; margin: 0; padding: 0; }
+
+.side .side-tree li { margin: 1px 0; }
+
+.side .side-tree a,
+.side .side-tree button {
+	display: block;
+	width: 100%;
+	text-align: left;
+	font: inherit;
+	font-size: 14px;
+	line-height: 1.7;
+	padding: 3px 8px;
+	color: var(--c-text);
+	background: transparent;
+	border: 1px solid transparent;
+	border-radius: 6px;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.side .side-tree a:hover,
+.side .side-tree button:hover { border-color: var(--c-line); text-decoration: none; }
+
+.side .side-tree .on { color: #fff; background: var(--c-nav); border-color: var(--c-nav); }
+
+.side .side-tree .on:hover { color: #fff; }
+
+.side .side-tree small { color: var(--c-muted); font-size: 12px; margin-left: 6px; }
+
+.side .side-tree .on small { color: rgba(255, 255, 255, .85); }
+
+.layout > .main { flex: 1 1 auto; min-width: 0; }
+
+/* --------------------------------------------------------------- 窄屏 */
+
+@media (max-width: 900px) {
+	.layout { flex-direction: column; }
+	.side {
+		position: static;
+		flex: none;
+		width: 100%;
+		max-height: 38vh;
+		overflow-y: auto;
+		border-right: 0;
+		border-bottom: 1px solid var(--c-line);
+		padding: 14px 16px 16px;
+	}
+}
+
+@media (max-width: 640px) {
+	.home, .doc, .placeholder { padding-left: 16px; padding-right: 16px; }
+	.nav .credit { font-size: 12px; }
+}
+
+@media (max-width: 420px) {
+	.nav { gap: 10px; padding: 0 12px; }
+	.nav .brand { font-size: 15px; }
+	.nav .credit { font-size: 11px; }
+	/* 品牌名本身就是回主页的链接, 这里省出位置给居中的署名 */
+	body.page-ggb .nav .navlink { display: none; }
+}
+
+/* 中文与西文/数字之间的间距交给text-autospace, 不再手动敲空格 */
+html {
+	text-autospace: normal;
+	text-spacing-trim: normal;
+}
