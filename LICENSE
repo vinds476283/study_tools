@@ -40,6 +40,7 @@ MIT 许可证授权.
    下列组件保留各自的许可证, 许可证原文随对应目录提供:
 
    - JSME, OpenChemLib, 3Dmol.js (含 GLmol, Three.js, jQuery)   BSD-3-Clause / MIT
+   - three.js (plot3d/ 用的独立构建)                             MIT
    - KaTeX, mhchem, MathLive, marked                            MIT
    - ink-on                                                      Apache-2.0
    - ONNX Runtime Web                                            MIT

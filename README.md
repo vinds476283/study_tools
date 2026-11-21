@@ -9,6 +9,7 @@
 ### 数学
 
 - **GeoGebra**: 完整的 GeoGebra 经典版 (Classic 5), 可以绘制函数图像和几何图形, 我觉得这个工具还是很重要的, 因为有些函数图像不画出来有些题目是完全看不懂, 借此可以绘制, 也方便纠正答案与思路.
+- **3D 绘图**: 专门画空间里的东西: 函数曲面 (可以是 z = f(x, y), 也可以写隐函数 F(x, y, z) = 0), 空间曲线 r(t) = (x, y, z). 拖动旋转, 滚轮缩放, 能按 x / y / z 或任意 hkl 方向看, 还有斜二测视图, 投影默认正交也可以切透视. 加几个点就能连线段, 画直线, 过三点画圆或圆弧, 以圆心加一点画圆; 还能量距离, 夹角 (附弧度, 正弦, 余弦, 正切), 二面角, 法向量, 平面方程, 四面体体积和曲面下的体积, 结果都写成整数, 分数或根式并用 KaTeX 排成公式 (KaTeX 复用的是 `visual_code/vendor/katex`). 用的是 three.js (MIT), 不涉及 GeoGebra 那套许可.
 - **Wolfram Alpha**: Wolfram|Alpha 是一个很强大的工具, 不仅数学, 物理化学也有大量涉猎, 但校园网不一定连得上它, 这个还需要一段时间的测试和想办法, 目前这个虽然理论上能用, 但不一定能用.
 
 ### 物理
@@ -62,6 +63,8 @@ study_tools/
 ├── README.md             本说明 (preface/ 页面读取它)
 ├── preface/              说明页
 ├── geogebra/             GeoGebra 经典版
+├── plot3d/               3D 绘图
+│   └── vendor/three/     three.js (MIT)
 ├── chemical_data_query/  化学数据查询
 ├── unit_cell/            晶胞结构
 │   └── files/            晶胞文件 (.vesta)
@@ -83,12 +86,12 @@ study_tools/
 
 ## 其他
 
-下列所有内容都是由生成式人工智能完成的, 但已经经过人工审核: 
+下列所有内容都是由生成式人工智能完成的, 但已经经过人工审核:
 
-- 所有样式, 除了第三方开源组件自带的样式,, 经过人工查验和修改;
+- 所有层叠样式表 (CSS 文件) (除了第三方开源组件自带的样式), 经过人工查验和修改;
 - 所有`.bat`文件, 经过人工查验, 没有修改;
 - 本文档的"怎么跑起来"标题, 经过人工查验, 没有修改;
-- 除了本文档之外的其余所有`README.md`, 经过人工查验, 没有修改. 
+- 除了本文档之外的其余所有`README.md`, 经过人工查验, 没有修改.
 
 ## 版权与许可
 
@@ -106,6 +109,7 @@ study_tools/
 | 组件                                  | 链接                                                                                         | 版权                                                     | 许可证                                   |
 | ------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------- | ---------------------------------------- |
 | GeoGebra Classic 5                    | 官网许可 https://www.geogebra.org/license<br />源码 https://github.com/geogebra/geogebra     | © GeoGebra GmbH                                         | GeoGebra 非商业许可 (仅限非商业, 须署名) |
+| three.js                              | https://github.com/mrdoob/three.js                                                           | © 2010-2023 three.js authors                            | MIT                                      |
 | JSME                                  | https://github.com/jsme-editor/jsme-editor.github.io<br />官网 https://jsme-editor.github.io | © Peter Ertl, Bruno Bienfait                            | BSD-3-Clause                             |
 | OpenChemLib (JS 版)                   | https://github.com/cheminfo/openchemlib-js                                                   | © 2015-2017 cheminfo                                    | BSD-3-Clause                             |
 | OpenChemLib (Java 原版)               | https://github.com/actelion/openchemlib                                                      | © Actelion Pharmaceuticals Ltd. 及贡献者                | BSD-3-Clause                             |

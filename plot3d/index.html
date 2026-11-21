@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>3D 绘图 | 铟子vinds的学习工具</title>
+	<meta name="description" content="铟子vinds 的学习工具 — 空间函数曲面、曲线与几何量测量">
+	<link rel="icon" href="../favicon.ico">
+	<link rel="apple-touch-icon" href="../favicon.ico">
+	<link rel="stylesheet" href="../style.css">
+	<link rel="stylesheet" href="../visual_code/vendor/katex/katex.min.css">
+	<link rel="stylesheet" href="app.css">
+	<script src="../theme.js"></script>
+	<script src="../visual_code/vendor/katex/katex.min.js"></script>
+</head>
+<body class="page-plot3d">
+	<header class="nav">
+		<a class="brand" href="../index.html">铟子vinds</a>
+		<span class="spacer"></span>
+		<a class="navlink" href="../index.html">主页</a>
+		<button class="theme-btn" id="theme-btn" type="button" aria-label="切换夜间模式">☾</button>
+	</header>
+
+	<main class="main">
+		<div class="p3-wrap">
+			<h1>3D 绘图</h1>
+
+			<div class="p3-layout">
+				<aside class="p3-side">
+					<section class="p3-block">
+						<h2>函数曲面 <span id="fn-hint">z = f(x, y)</span></h2>
+						<label class="p3-row"><span class="p3-key">类型</span>
+							<select class="p3-input" id="fn-mode">
+								<option value="z">z = f(x, y)</option>
+								<option value="f">F(x, y, z) = 0（隐函数）</option>
+							</select>
+						</label>
+						<label class="p3-row"><span class="p3-key" id="fn-key">z =</span><input class="p3-input" id="fn-expr" placeholder="sin(x) * cos(y)" spellcheck="false" autocomplete="off"></label>
+						<label class="p3-row"><span class="p3-key">x</span><input class="p3-input p3-num" id="fn-x0" value="-5"><span class="p3-tilde">~</span><input class="p3-input p3-num" id="fn-x1" value="5"></label>
+						<label class="p3-row"><span class="p3-key">y</span><input class="p3-input p3-num" id="fn-y0" value="-5"><span class="p3-tilde">~</span><input class="p3-input p3-num" id="fn-y1" value="5"></label>
+						<label class="p3-row" id="fn-zrow" hidden><span class="p3-key">z</span><input class="p3-input p3-num" id="fn-z0" value="-5"><span class="p3-tilde">~</span><input class="p3-input p3-num" id="fn-z1" value="5"></label>
+						<label class="p3-row"><span class="p3-key">精度</span>
+							<select class="p3-input" id="fn-res">
+								<option value="30">粗</option>
+								<option value="50" selected>中</option>
+								<option value="80">细</option>
+								<option value="120">很细</option>
+							</select>
+						</label>
+						<div class="p3-actions">
+							<button class="p3-btn" id="btn-surface" type="button">画曲面</button>
+							<button class="p3-btn ghost" id="btn-del-surface" type="button">删除</button>
+						</div>
+						<p class="p3-note" id="surface-note"></p>
+						<p class="p3-note p3-math-line" id="surface-volume"></p>
+					</section>
+
+					<section class="p3-block">
+						<h2>空间曲线 <span>r(t) = (x, y, z)</span></h2>
+						<label class="p3-row"><span class="p3-key">x(t)</span><input class="p3-input" id="cv-x" placeholder="3 * cos(t)" spellcheck="false" autocomplete="off"></label>
+						<label class="p3-row"><span class="p3-key">y(t)</span><input class="p3-input" id="cv-y" placeholder="3 * sin(t)" spellcheck="false" autocomplete="off"></label>
+						<label class="p3-row"><span class="p3-key">z(t)</span><input class="p3-input" id="cv-z" placeholder="t / 2" spellcheck="false" autocomplete="off"></label>
+						<label class="p3-row"><span class="p3-key">t</span><input class="p3-input p3-num" id="cv-t0" value="0"><span class="p3-tilde">~</span><input class="p3-input p3-num" id="cv-t1" value="6.2832"></label>
+						<div class="p3-actions">
+							<button class="p3-btn" id="btn-curve" type="button">画曲线</button>
+							<button class="p3-btn ghost" id="btn-del-curve" type="button">删除</button>
+						</div>
+						<p class="p3-note" id="curve-note"></p>
+					</section>
+
+					<section class="p3-block">
+						<h2>点</h2>
+						<label class="p3-row"><span class="p3-key">写法</span><input class="p3-input" id="pt-input" placeholder="A(1, 2, 3)" spellcheck="false"></label>
+						<div class="p3-actions">
+							<button class="p3-btn" id="btn-point" type="button">加点</button>
+							<button class="p3-btn ghost" id="btn-del-points" type="button">清空点</button>
+						</div>
+						<ul class="p3-points" id="pt-list"></ul>
+					</section>
+				</aside>
+
+				<section class="p3-stage">
+					<div class="p3-view">
+						<canvas id="p3-canvas"></canvas>
+						<div class="p3-tip">拖动旋转 · 滚轮缩放 · 右键拖动平移 · 点小球选中</div>
+					</div>
+
+					<div class="p3-toolbar">
+						<span class="p3-tlabel">视角</span>
+						<button class="p3-btn small" data-view="x+" type="button">x+</button>
+						<button class="p3-btn small" data-view="x-" type="button">x−</button>
+						<button class="p3-btn small" data-view="y+" type="button">y+</button>
+						<button class="p3-btn small" data-view="y-" type="button">y−</button>
+						<button class="p3-btn small" data-view="z+" type="button">z+</button>
+						<button class="p3-btn small" data-view="z-" type="button">z−</button>
+						<button class="p3-btn small" id="btn-oblique" type="button" title="x、z 轴真长，y 轴 45° 半长；拖动画面会退出斜二测">斜二测视图</button>
+						<input class="p3-input p3-hkl" id="p3-hkl" placeholder="hkl，如 1 1 1" autocomplete="off">
+						<button class="p3-btn small" id="btn-hkl" type="button">看这个方向</button>
+						<span class="p3-sep"></span>
+						<label class="p3-check"><input type="checkbox" id="opt-ortho" checked> 正交投影</label>
+						<button class="p3-btn small" id="btn-reset" type="button">复位</button>
+					</div>
+
+					<div class="p3-build">
+						<span class="p3-tlabel">用选中的点画</span>
+						<button class="p3-btn small" data-build="segment" type="button">线段</button>
+						<button class="p3-btn small" data-build="line" type="button">直线</button>
+						<button class="p3-btn small" data-build="circle3" type="button">过三点圆</button>
+						<button class="p3-btn small" data-build="arc3" type="button">过三点圆弧</button>
+						<button class="p3-btn small" data-build="circle2" type="button">圆（圆心 + 一点）</button>
+						<button class="p3-btn small ghost" id="btn-clear-build" type="button">清除作图</button>
+					</div>
+
+					<div class="p3-measure" id="measure">
+						<p class="p3-muted">点上两个小球量距离，三个量夹角和法向量，四个量二面角。</p>
+					</div>
+					<p class="p3-note" id="build-note"></p>
+				</section>
+			</div>
+		</div>
+	</main>
+
+	<footer class="foot">
+		<p>Copyright © 2026-present | <a href="https://y.vinds.top" target="_blank" rel="noopener noreferrer">铟子vinds</a></p>
+	</footer>
+
+	<script type="module" src="app.js"></script>
+</body>
+</html>
